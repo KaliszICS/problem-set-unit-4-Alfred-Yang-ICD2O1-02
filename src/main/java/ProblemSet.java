@@ -76,7 +76,7 @@ public class ProblemSet {
 		}
 	}
 	// Printing score number
-		System.out.println("Total Score: " + score);
+		System.out.println("\nTotal Score: " + score);
 		if (score >= ((double)numberOfAttempts/2)){
 			System.out.println("Congratulations you got " + score + " out of " + numberOfAttempts + " rounds right!");
 		}
