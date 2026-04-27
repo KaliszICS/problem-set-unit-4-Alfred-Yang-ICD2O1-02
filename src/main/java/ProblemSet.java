@@ -10,7 +10,6 @@ public class ProblemSet {
 	static int minimumValue = 0;
 	static int maximumValue = 0;
 	static Scanner input = new Scanner(System.in);
-	static Boolean rangeNumber = false;
 	static Random random = new Random();
 
 	public static void main(String args[]) {
@@ -23,10 +22,8 @@ public class ProblemSet {
 	numberOfAttempts = inputNumber("Input a number of rounds to play: ");
 
 	//THE RANGE
-	rangeChecker();
-		while (!(rangeNumber) || !(minimumValue+2 <= maximumValue)){
+		while (!(rangeChecker()) || !(minimumValue+2 <= maximumValue)){
 			System.out.println("\nInvalid Range!");
-			rangeChecker();
 		}	
 		//High Low or Even text messages 
 		String evenTextMessage = "";
@@ -106,16 +103,18 @@ public class ProblemSet {
 		}
 		return Integer.parseInt(userInput);
 	}
-	public static String rangeChecker(){
+	public static boolean rangeChecker(){
 		System.out.println("\nWhat Range would you like to play between (#-#)?");
 		String range = input.nextLine();
-		rangeNumber = false;
+		Boolean rangeNumber = false;
 		minimumValue = 0;
 		maximumValue = 0;
 		String min = "";
 		String max = "";
 		int indexOfDash = 0;
-		if (range.length() < 3){return range;}
+		if (range.length() < 3)
+			{return rangeNumber;
+			}
 		//Splitting The Range To Two Numbers
 		else if (range.substring(1).contains("-")){
 			indexOfDash = range.substring(1).indexOf("-")+1;
@@ -129,8 +128,7 @@ public class ProblemSet {
 			minimumValue = Integer.parseInt(min);
 		}
 		else{
-			rangeNumber = false;
-			return range;
+			return rangeNumber = false;
 		}
 		if ((max.length() >= 2 && max.startsWith("-") && ifNumber(max.substring(1)))){
 			maximumValue = Integer.parseInt(max.substring(1)) * -1;
@@ -139,10 +137,8 @@ public class ProblemSet {
 			maximumValue = Integer.parseInt(max);
 		}
 		else{
-			rangeNumber = false;
-			return range;
+			return rangeNumber = false;
 		}
-		rangeNumber = true;
-		return range;	
-			}
+		return rangeNumber = true;
 	}
+}
