@@ -128,7 +128,7 @@ public class ProblemSet {
 			minimumValue = Integer.parseInt(min);
 		}
 		else{
-			return rangeNumber = false;
+			return rangeNumber;
 		}
 		if ((max.length() >= 2 && max.startsWith("-") && ifNumber(max.substring(1)))){
 			maximumValue = Integer.parseInt(max.substring(1)) * -1;
@@ -137,7 +137,7 @@ public class ProblemSet {
 			maximumValue = Integer.parseInt(max);
 		}
 		else{
-			return rangeNumber = false;
+			return rangeNumber;
 		}
 		return rangeNumber = true;
 	}
