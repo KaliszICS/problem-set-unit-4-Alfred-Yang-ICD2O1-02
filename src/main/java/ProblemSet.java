@@ -112,8 +112,8 @@ public class ProblemSet {
 		String min = "";
 		String max = "";
 		int indexOfDash = 0;
-		if (range.length() < 3)
-			{return rangeNumber;
+		if (range.length() < 3){
+			return rangeNumber;
 			}
 		//Splitting The Range To Two Numbers
 		else if (range.substring(1).contains("-")){
