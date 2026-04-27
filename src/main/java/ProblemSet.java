@@ -25,7 +25,7 @@ public class ProblemSet {
 	//THE RANGE
 	rangeChecker();
 		while (!(rangeNumber) || !(minimumValue+2 <= maximumValue)){
-			System.out.println("\nInvilid Range!");
+			System.out.println("\nInvalid Range!");
 			rangeChecker();
 		}	
 		//High Low or Even text messages 
@@ -57,15 +57,18 @@ public class ProblemSet {
 			System.out.println("\nRound " + roundNumber + ":\n");
 			System.out.print(highLowEvenTextMessage);
 	//picking 1, 2, 3
-		int highLowOrEvenInput = inputNumber(highLowEvenTextMessage);
-		while (highLowOrEvenInput < 1 || highLowOrEvenInput > 3){
+		int userInput = inputNumber(highLowEvenTextMessage);
+		while (userInput < 1 || userInput > 3){
 			System.out.println("\nInvalid Input!\n");
 			System.out.print(highLowEvenTextMessage);
-			highLowOrEvenInput = inputNumber(highLowEvenTextMessage);
+			userInput = inputNumber(highLowEvenTextMessage);
 		}
 	//picking random number
 		int randomNumber = random.nextInt(maximumValue - minimumValue) + minimumValue;
-		if ((randomNumber > upperMiddleNumber && highLowOrEvenInput == 1) || (randomNumber < lowerMiddleNumber && highLowOrEvenInput == 2) || (highLowOrEvenInput == 3 && (randomNumber == upperMiddleNumber || randomNumber == lowerMiddleNumber))){
+		boolean higher = randomNumber > upperMiddleNumber;
+		boolean lower = randomNumber < lowerMiddleNumber;
+		boolean middle = randomNumber == upperMiddleNumber || randomNumber == lowerMiddleNumber;
+		if ((higher && userInput == 1) || (lower && userInput == 2) || (userInput == 3 && (middle))){
 			score++;
 			System.out.println("\nThe number was " + randomNumber + ". You were correct.");
 			System.out.println("Current score: " + score + "\n");
