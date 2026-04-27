@@ -26,45 +26,45 @@ public class ProblemSet {
 			System.out.println("\nInvalid Range!");
 		}	
 		//High Low or Even text messages 
-		String evenTextMessage = "";
-		String highTextMessage = "";
-		String lowTextMessage = "";
-		int upperMiddleNumber = (int)Math.ceil(((double)maximumValue-(double)minimumValue)/2) + minimumValue;
-		int lowerMiddleNumber = (int)Math.floor(((double)maximumValue-(double)minimumValue)/2) + minimumValue;
-		if (upperMiddleNumber == lowerMiddleNumber){
-			evenTextMessage = "3. Even(" + upperMiddleNumber +")\n"; 
+		String evenText = "";
+		String highText = "";
+		String lowText = "";
+		int upperMiddleNum = (int)Math.ceil(((double)maximumValue-(double)minimumValue)/2) + minimumValue;
+		int lowerMiddleNum = (int)Math.floor(((double)maximumValue-(double)minimumValue)/2) + minimumValue;
+		if (upperMiddleNum == lowerMiddleNum){
+			evenText = "3. Even(" + upperMiddleNum +")\n\n"; 
 		}
 		else{
-			evenTextMessage = "3. Even(" + lowerMiddleNumber + " to " + upperMiddleNumber +")\n";
+			evenText = "3. Even(" + lowerMiddleNum + " to " + upperMiddleNum +")\n\n";
 		}
-		if (maximumValue == upperMiddleNumber+1){
-			highTextMessage = "1. High (" + maximumValue + ")";
-		}
-		else {
-			highTextMessage = "1. High (" + (upperMiddleNumber+1) + " to " + maximumValue + ")";
-		}
-		if (minimumValue == lowerMiddleNumber-1){
-			lowTextMessage = "2. Low (" + minimumValue + ")";
+		if (maximumValue == upperMiddleNum+1){
+			highText = "1. High (" + maximumValue + ")\n";
 		}
 		else {
-			lowTextMessage = "2. Low (" + minimumValue + " to " + (lowerMiddleNumber-1) + ")";
+			highText = "1. High (" + (upperMiddleNum+1) + " to " + maximumValue + ")\n";
 		}
-		String highLowEvenTextMessage = "Please select High, Low or Even:\n" + highTextMessage + "\n" + lowTextMessage + "\n" + evenTextMessage + "\n";
+		if (minimumValue == lowerMiddleNum-1){
+			lowText = "2. Low (" + minimumValue + ")\n";
+		}
+		else {
+			lowText = "2. Low (" + minimumValue + " to " + (lowerMiddleNum-1) + ")\n";
+		}
+		String gameMenu = "Please select High, Low or Even:\n" + highText  + lowText + evenText;
 		for (int roundNumber = 1; roundNumber < numberOfAttempts+1; roundNumber++){
 			System.out.println("\nRound " + roundNumber + ":\n");
-			System.out.print(highLowEvenTextMessage);
+			System.out.print(gameMenu);
 	//picking 1, 2, 3
-		int userInput = inputNumber(highLowEvenTextMessage);
+		int userInput = inputNumber(gameMenu);
 		while (userInput < 1 || userInput > 3){
 			System.out.println("\nInvalid Input!\n");
-			System.out.print(highLowEvenTextMessage);
-			userInput = inputNumber(highLowEvenTextMessage);
+			System.out.print(gameMenu);
+			userInput = inputNumber(gameMenu);
 		}
 	//picking random number
 		int randomNumber = random.nextInt(maximumValue - minimumValue) + minimumValue;
-		boolean higher = randomNumber > upperMiddleNumber;
-		boolean lower = randomNumber < lowerMiddleNumber;
-		boolean middle = randomNumber == upperMiddleNumber || randomNumber == lowerMiddleNumber;
+		boolean higher = randomNumber > upperMiddleNum;
+		boolean lower = randomNumber < lowerMiddleNum;
+		boolean middle = randomNumber == upperMiddleNum || randomNumber == lowerMiddleNum;
 		if ((higher && userInput == 1) || (lower && userInput == 2) || (userInput == 3 && (middle))){
 			score++;
 			System.out.println("\nThe number was " + randomNumber + ". You were correct.");
@@ -85,7 +85,9 @@ public class ProblemSet {
 //------------------------------FUNCTIONS BELOW------------------------------------------------------------------------
 	//Checking If The Value That Was Given Was A Number
 	public static boolean ifNumber(String number) {
-		if (number.length() == 0){return false;}
+		if (number.length() == 0){
+			return false;
+		}
 		//Checking The Ascii Values Of The Numbers 0-9 For Every Index
 		for (int index = 0; index < number.length(); index++) {
 			if (!((int) number.charAt(index) >= 48 && (int) number.charAt(index) <= 57) || number.contains(" ")) {
