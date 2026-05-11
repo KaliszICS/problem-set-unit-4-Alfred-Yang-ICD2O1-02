@@ -1,0 +1,9 @@
+K(30%): 100
+I(30%): 95
+C(10%): 100
+A(30%): 100
+98.5%
+
+Your checks sometimes over check a bit (sometimes length just doesn't matter since it will result in false anyway, in the range)
+Also your middle number calculation could have just been min + max / 2 and then ceil/floor the result.
+Otherwise great work Alfred.  Just need to simplify things down a bit and organize it a bit better (lack of spacing).
